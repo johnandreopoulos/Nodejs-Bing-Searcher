@@ -15,12 +15,19 @@ node index.js
 ---
 
 ## Usage
+By default i set the page limit to `3`. You can change this by editing the following line in index.js:
 ```javascript
-Search.search('query', function(results) {
-    console.log(results);
+const pages = 3;
+```
+
+You can also change the `query` by editing the following line in index.js:
+```javascript
+Search.search('query').then(results => {
+    console.log(results.slice(0, 3));
 });
 ```
-The above code will return an array of results. Each result will have the following properties:
+
+The above code will return an `array` of results. For each result, you can access the following properties:
 ```javascript
 {
     title: 'Title of the result',
@@ -28,10 +35,12 @@ The above code will return an array of results. Each result will have the follow
     content: 'Description of the result'
 }
 ```
----
 
-## Page Limit
-By default i set the page limit to 3. You can change this by editing the following line in index.js:
+## Obtain a specific number of outcomes
+By default, the search will return all the results that Bing returns from the mentioned page limit. If you want to obtain a specific number of results, you can use the `slice` method on the results array. For example, if you want to obtain the first <b>3 results</b>, you can do the following:
 ```javascript
-const pages = 3;
+Search.search('query').then(results => {
+    console.log(results.slice(0, 3));
+});
 ```
+> Note: The first parameter of the `slice` method is the starting index and the second parameter is the ending index. The ending index is not included in the results.
