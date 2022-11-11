@@ -5,7 +5,8 @@ This is a custom nodejs module that allows you to search for a query on Bing and
 
 > <p style="color: red">
 > <b style="color: black">Note:</b> <u>This module is not meant to be used for scraping or other illegal purposes. It's only meant to be used for educational purposes.</u>
-> </p> 
+> </p>
+
 
 # Fast navigation
 - [Simple Bing Searcher](#simple-bing-searcher)
@@ -14,7 +15,7 @@ This is a custom nodejs module that allows you to search for a query on Bing and
   - [Usage](#usage)
         - [Pages](#pages)
         - [Query](#query)
-  - [Returning the results](#returning-the-results)
+  - [Returning the outcomes](#returning-the-outcomes)
         - [Examples:](#examples)
 	
 ## Installation
@@ -40,7 +41,7 @@ const pages = 3;
 You can also change the `query` by editing the following line in index.js:
 ```javascript
 Search.search('query').then(results => {
-    console.log(results.slice(0, 3));
+    console.log(results);
 });
 ```
 
@@ -54,24 +55,15 @@ The above code will return an `array` of results. For each result, you can acces
 ```
 <br>
 
-If you want to get the 1st result, you can use the following code:
-```javascript
-Search.search('query').then(results => {
-    console.log(results[0]);
-});
-```
-<br>
 
-## Returning the results
+## Returning the outcomes
+##### Examples:
 ```javascript
 // Get all results
 Search.search('query').then(results => {
     console.log(results);
 });
 ```
-
-##### Examples:
-
 ```javascript
 // Get the first 1st result
 Search.search('query').then(results => {
@@ -99,9 +91,4 @@ Search.search('query').then(results => {
     console.log(results.slice(0, 3));
 });
 ```
-And so on...
-
-> Note: `slice(x, y)` is a method that returns a shallow copy of a portion of an array into a new array object selected from `begin` to `end` (end not included). The original array will not be modified.
-
-> Note: `results[0]` is a method that returns the first element of an array. The original array will not be modified.
-> - <b>Inside the brackets, you can specify the index of the element you want to get. The first element is at index 0, the second element is at index 1, and so on.</b>
+> Note: The first parameter of the `slice` method is the starting index and the second parameter is the ending index. The ending index is not included in the results.
