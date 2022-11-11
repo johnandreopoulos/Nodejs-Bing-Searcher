@@ -12,10 +12,10 @@ This is a custom nodejs module that allows you to search for a query on Bing and
 - [Fast navigation](#fast-navigation)
   - [Installation](#installation)
   - [Usage](#usage)
-     - [Pages](#pages)
-     - [Query](#query)
+        - [Pages](#pages)
+        - [Query](#query)
   - [Returning the results](#returning-the-results)
-     - [Examples:](#examples)
+        - [Examples:](#examples)
 	
 ## Installation
 ```
@@ -63,13 +63,6 @@ Search.search('query').then(results => {
 <br>
 
 ## Returning the results
-```javascript
-// Get all results
-Search.search('query').then(results => {
-    console.log(results);
-});
-```
-
 ##### Examples:
 
 ```javascript
