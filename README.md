@@ -7,6 +7,14 @@ This is a custom nodejs module that allows you to search for a query on Bing and
 > <b style="color: black">Note:</b> <u>This module is not meant to be used for scraping or other illegal purposes. It's only meant to be used for educational purposes.</u>
 > </p>
 
+# Fast navigation
+  - [Installation](#installation)
+  - [Start](#start)
+  - [Usage](#usage)
+        - [Pages](#pages)
+        - [Query](#query)
+  - [Obtain a specific number of outcomes](#obtain-a-specific-number-of-outcomes)
+
 	
 ## Installation
 ```
@@ -23,12 +31,12 @@ The above command will start the code.
 ## Usage
 By default, I set the page limit to `3`. You may alter this by changing the following line in searcher.js:
 
-##### - Pages
+##### Pages
 ```javascript
 const pages = 3;
 ```
 
-##### - Query
+##### Query
 You can also change the `query` by editing the following line in index.js:
 ```javascript
 Search.search('query').then(results => {
@@ -54,14 +62,3 @@ Search.search('query').then(results => {
 });
 ```
 > Note: The first parameter of the `slice` method is the starting index and the second parameter is the ending index. The ending index is not included in the results.
-
-
-# Fast navigation
-- [Simple Bing Searcher](#simple-bing-searcher)
-  - [Installation](#installation)
-  - [Start](#start)
-  - [Usage](#usage)
-        - [- Pages](#--pages)
-        - [- Query](#--query)
-  - [Obtain a specific number of outcomes](#obtain-a-specific-number-of-outcomes)
-- [Fast navigation](#fast-navigation)
