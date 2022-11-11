@@ -8,13 +8,12 @@ This is a custom nodejs module that allows you to search for a query on Bing and
 > </p>
 
 # Fast navigation
-  - [Installation](#installation)
-  - [Usage](#usage)
-    - [Pages](#pages)
-    - [Query](#query)
-    - [Obtain a specific number of outcomes](#obtain-a-specific-number-of-outcomes)
-    - [Fast navigation](#fast-navigation)    
-	
+- [Installation](#installation)
+- [Usage](#usage)
+   - [Pages](#pages)
+   - [Query](#query)
+   - [Obtain a specific number of outcomes](#obtain-a-specific-number-of-outcomes)
+
 ## Installation
 ```
 npm install
