@@ -44,16 +44,6 @@ The above code will return an `array` of results. For each result, you can acces
 ```
 <br>
 
-## Obtain a specific number of outcomes
-By default, the search will return all the results that Bing returns from the mentioned page limit.
-
-If you want to obtain a specific number of results, you can use the following code:
-```javascript
-Search.search('query').then(results => {
-    console.log(results.slice(0, 3));
-});
-```
-
 If you want to get the 1st result, you can use the following code:
 ```javascript
 Search.search('query').then(results => {
@@ -62,13 +52,15 @@ Search.search('query').then(results => {
 ```
 <br>
 
-#### Examples
+## Returning the results
 ```javascript
 // Get all results
 Search.search('query').then(results => {
     console.log(results);
 });
 ```
+
+##### Examples:
 
 ```javascript
 // Get the first 1st result
@@ -83,7 +75,6 @@ Search.search('query').then(results => {
     console.log(results[1]);
 });
 ```
-> Note: The first result is at index 0, the second result is at index 1, and so on.
 
 ```javascript
 // Get the first 2 results
@@ -104,3 +95,14 @@ And so on...
 
 > Note: `results[0]` is a method that returns the first element of an array. The original array will not be modified.
 > - <b>Inside the brackets, you can specify the index of the element you want to get. The first element is at index 0, the second element is at index 1, and so on.</b>
+
+
+# Fast navigation
+- [Simple Bing Searcher](#simple-bing-searcher)
+  - [Installation](#installation)
+  - [Usage](#usage)
+        - [Pages](#pages)
+        - [Query](#query)
+  - [Returning the results](#returning-the-results)
+        - [Examples:](#examples)
+- [Fast navigation](#fast-navigation)
