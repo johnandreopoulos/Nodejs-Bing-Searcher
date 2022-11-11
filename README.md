@@ -6,6 +6,16 @@ This is a custom nodejs module that allows you to search for a query on Bing and
 > <p style="color: red">
 > <b style="color: black">Note:</b> <u>This module is not meant to be used for scraping or other illegal purposes. It's only meant to be used for educational purposes.</u>
 > </p> 
+
+# Fast navigation
+- [Simple Bing Searcher](#simple-bing-searcher)
+- [Fast navigation](#fast-navigation)
+  - [Installation](#installation)
+  - [Usage](#usage)
+        - [Pages](#pages)
+        - [Query](#query)
+  - [Returning the results](#returning-the-results)
+        - [Examples:](#examples)
 	
 ## Installation
 ```
@@ -95,14 +105,3 @@ And so on...
 
 > Note: `results[0]` is a method that returns the first element of an array. The original array will not be modified.
 > - <b>Inside the brackets, you can specify the index of the element you want to get. The first element is at index 0, the second element is at index 1, and so on.</b>
-
-
-# Fast navigation
-- [Simple Bing Searcher](#simple-bing-searcher)
-  - [Installation](#installation)
-  - [Usage](#usage)
-        - [Pages](#pages)
-        - [Query](#query)
-  - [Returning the results](#returning-the-results)
-        - [Examples:](#examples)
-- [Fast navigation](#fast-navigation)
