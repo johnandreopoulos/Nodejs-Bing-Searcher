@@ -9,12 +9,11 @@ This is a custom nodejs module that allows you to search for a query on Bing and
 
 # Fast navigation
   - [Installation](#installation)
-  - [Start](#start)
   - [Usage](#usage)
-        - [Pages](#pages)
-        - [Query](#query)
-  - [Obtain a specific number of outcomes](#obtain-a-specific-number-of-outcomes)
-
+    - [Pages](#pages)
+    - [Query](#query)
+    - [Obtain a specific number of outcomes](#obtain-a-specific-number-of-outcomes)
+    - [Fast navigation](#fast-navigation)    
 	
 ## Installation
 ```
@@ -22,7 +21,6 @@ npm install
 ```
 The above command will install the dependencies.
 
-## Start
 ```
 node index.js
 ```
