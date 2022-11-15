@@ -35,6 +35,7 @@ The above command will start the code.
 You can also change the `query` by editing the following line in index.js:
 ```javascript
 Search('query').then(data => {
+    if (data.error) return console.log(data.message);
     console.log(data);
 });
 ```
@@ -69,6 +70,7 @@ On Response Statuses errors (4xx, 5xx), the module will return an error with the
 ```javascript
 // Get the all resukts
 Search.search('query').then(data => {
+    if (data.error) return console.log(data.message);
     console.log(data);
 });
 ```
@@ -76,6 +78,7 @@ Search.search('query').then(data => {
 ```javascript
 // Get the first 1st result
 Search.search('query').then(data => {
+    if (data.error) return console.log(data.message);
     console.log(data[0]);
 });
 ```
@@ -83,6 +86,7 @@ Search.search('query').then(data => {
 ```javascript
 // Get the first 2nd result
 Search.search('query').then(data => {
+    if (data.error) return console.log(data.message);
     console.log(data[1]);
 });
 ```
@@ -90,6 +94,7 @@ Search.search('query').then(data => {
 ```javascript
 // Get the first 2 results
 Search.search('query').then(data => {
+    if (data.error) return console.log(data.message);
     console.log(data.slice(0, 2));
 });
 ```
@@ -97,6 +102,7 @@ Search.search('query').then(data => {
 ```javascript
 // Get the first 3 results
 Search.search('query').then(data => {
+    if (data.error) return console.log(data.message);
     console.log(data.slice(0, 3));
 });
 ```

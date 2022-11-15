@@ -14,10 +14,10 @@ const Search = async (query) => {
         headers
     });
 
-    if (response.status === 404) return console.log('Error: 404 - Not Found');
-    if (response.status === 500) return console.log('Error: 500 - Internal Server Error');
-    if (response.status === 503) return console.log('Error: 503 - Service Unavailable');
-    if (response.status === 504) return console.log('Error: 504 - Gateway Timeout');
+    if (response.status === 404) error(404);
+    if (response.status === 500) error(500);
+    if (response.status === 503) error(503);
+    if (response.status === 504) error(504);
 
     let $ = cheerio.load(await response.text());
     await $('.b_algo').each((i, el) => {
@@ -30,9 +30,17 @@ const Search = async (query) => {
         }
     });
 
-    if (data.length < 1) return { error: true, message: 'I couldn\'t find anything.' };
+    if (data.length < 1) error('No Results');
 
     return data;
+}
+
+function error(x) {
+    if (x === 404) return data.push({ error:true, message: '404 Not Found' });
+    if (x === 500) return data.push({ error:true, message: '500 Internal Server Error' });
+    if (x === 503) return data.push({ error:true, message: '503 Service Unavailable' });
+    if (x === 504) return data.push({ error:true, message: '504 Gateway Timeout' });
+    if (x === 'No Results') return data.push({ error:true, message: 'No Results' });
 }
 
 module.exports = { Search };
