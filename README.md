@@ -36,7 +36,6 @@ Search('query').then(data => {
     console.log(data);
 });
 ```
-An example of "nodejs" returning results ![image](https://user-images.githubusercontent.com/39243722/201915351-cba14aaa-bda2-4bc5-a51d-9dc7448650b4.png)
 
 The above code will return an `array` of results. For each result, you can access the following properties:
 ```javascript
@@ -49,11 +48,16 @@ The above code will return an `array` of results. For each result, you can acces
 
 ## Returning Errors
 On Response Statuses errors (4xx, 5xx), the module will return an error with the following format:
+- 404: Not Found
+- 500: Internal Server Error
+- 503: Service Unavailable
+- 504: Gateway Timeout
+- No Results: No results were found for the query
+
 ```javascript
-{
-    error: true,
-    message: 'Error message'
-}
+[ 
+    { error: 'Message' }
+]
 ```
 <br>
 
