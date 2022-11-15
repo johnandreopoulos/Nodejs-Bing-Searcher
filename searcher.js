@@ -36,11 +36,11 @@ const Search = async (query) => {
 }
 
 function error(x) {
-    if (x === 404) return data.push({ error:true, message: '404 Not Found' });
-    if (x === 500) return data.push({ error:true, message: '500 Internal Server Error' });
-    if (x === 503) return data.push({ error:true, message: '503 Service Unavailable' });
-    if (x === 504) return data.push({ error:true, message: '504 Gateway Timeout' });
-    if (x === 'No Results') return data.push({ error:true, message: 'No Results' });
+    if (x === 404) return data.push({ error: true, message: '404 Not Found' });
+    if (x === 500) return data.push({ error: true, message: '500 Internal Server Error' });
+    if (x === 503) return data.push({ error: true, message: '503 Service Unavailable' });
+    if (x === 504) return data.push({ error: true, message: '504 Gateway Timeout' });
+    if (x === 'No Results') return data.push({ error: true, message: 'No Results' });
 }
 
 module.exports = { Search };
