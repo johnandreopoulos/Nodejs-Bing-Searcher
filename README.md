@@ -68,7 +68,7 @@ Search.search('query').then(results => {
 ```javascript
 // Get the first 1st result
 Search.search('query').then(results => {
-    console.log(results[0]);
+    console.log(results);
 });
 ```
 
