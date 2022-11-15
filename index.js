@@ -1,5 +1,6 @@
 const { Search } = require('./searcher');
 
-Search('nodejs').then(results => {
-    console.log(results) // Returns an array of objects.
+// Fill in the 'query' with whatever you want to search for.
+Search('query').then((data) => {
+    console.log(data);
 });
