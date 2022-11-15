@@ -39,6 +39,8 @@ Search('query').then(data => {
     console.log(data);
 });
 ```
+Example of "Nodejs": ![image](https://user-images.githubusercontent.com/39243722/201919355-b0eea5c5-0d0c-41d0-a7fe-e9e0684d3523.png)
+
 
 The above code will return an `array` of results. For each result, you can access the following properties:
 ```javascript
