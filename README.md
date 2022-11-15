@@ -12,7 +12,7 @@ This is a custom nodejs module that allows you to search for a query on Bing and
 - [Fast navigation](#fast-navigation)
   - [Installation](#installation)
   - [Usage](#usage)
-    - [Pages](#pages)
+  - [Returning Errors](#returning-errors)
     - [Query](#query)
   - [Returning the results](#returning-the-results)
     - [Examples:](#examples)
@@ -29,18 +29,11 @@ node index.js
 The above command will start the code.
 
 ## Usage
-By default, I set the page limit to `3`. You may alter this by changing the following line in searcher.js:
-
-##### Pages
-```javascript
-const pages = 3;
-```
-
 ##### Query
 You can also change the `query` by editing the following line in index.js:
 ```javascript
-Search.search('query').then(results => {
-    console.log(results);
+Search('query').then(data => {
+    console.log(data);
 });
 ```
 
@@ -52,6 +45,15 @@ The above code will return an `array` of results. For each result, you can acces
     content: 'Description of the result'
 }
 ```
+
+## Returning Errors
+On Response Statuses errors (4xx, 5xx), the module will return an error with the following format:
+```javascript
+{
+    error: true,
+    message: 'Error message'
+}
+```
 <br>
 
 ## Returning the results
@@ -59,36 +61,36 @@ The above code will return an `array` of results. For each result, you can acces
 
 ```javascript
 // Get the all resukts
-Search.search('query').then(results => {
-    console.log(results);
+Search.search('query').then(data => {
+    console.log(data);
 });
 ```
 
 ```javascript
 // Get the first 1st result
-Search.search('query').then(results => {
-    console.log(results[0]);
+Search.search('query').then(data => {
+    console.log(data[0]);
 });
 ```
 
 ```javascript
 // Get the first 2nd result
-Search.search('query').then(results => {
-    console.log(results[1]);
+Search.search('query').then(data => {
+    console.log(data[1]);
 });
 ```
 
 ```javascript
 // Get the first 2 results
-Search.search('query').then(results => {
-    console.log(results.slice(0, 2));
+Search.search('query').then(data => {
+    console.log(data.slice(0, 2));
 });
 ```
 
 ```javascript
 // Get the first 3 results
-Search.search('query').then(results => {
-    console.log(results.slice(0, 3));
+Search.search('query').then(data => {
+    console.log(data.slice(0, 3));
 });
 ```
 And so on...
