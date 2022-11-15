@@ -18,6 +18,8 @@ This is a custom nodejs module that allows you to search for a query on Bing and
     - [Examples:](#examples)
 	
 ## Installation
+install [Nodejs](https://nodejs.org/en/download/) and then run this command in your terminal:
+
 ```
 npm install
 ```
