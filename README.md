@@ -40,7 +40,7 @@ const pages = 3;
 You can also change the `query` by editing the following line in index.js:
 ```javascript
 Search.search('query').then(results => {
-    console.log(results.slice(0, 3));
+    console.log(results);
 });
 ```
 
@@ -54,21 +54,20 @@ The above code will return an `array` of results. For each result, you can acces
 ```
 <br>
 
-If you want to get the 1st result, you can use the following code:
-```javascript
-Search.search('query').then(results => {
-    console.log(results[0]);
-});
-```
-<br>
-
 ## Returning the results
 ##### Examples:
 
 ```javascript
-// Get the first 1st result
+// Get the all resukts
 Search.search('query').then(results => {
     console.log(results);
+});
+```
+
+```javascript
+// Get the first 1st result
+Search.search('query').then(results => {
+    console.log(results[0]);
 });
 ```
 
