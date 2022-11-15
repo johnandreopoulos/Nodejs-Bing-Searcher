@@ -39,9 +39,6 @@ Search('query').then(data => {
     console.log(data);
 });
 ```
-Example of "Nodejs": ![image](https://user-images.githubusercontent.com/39243722/201919355-b0eea5c5-0d0c-41d0-a7fe-e9e0684d3523.png)
-
-
 The above code will return an `array` of results. For each result, you can access the following properties:
 ```javascript
 {
@@ -50,6 +47,7 @@ The above code will return an `array` of results. For each result, you can acces
     content: 'Description of the result'
 }
 ```
+Example of "Nodejs": ![image](https://user-images.githubusercontent.com/39243722/201919355-b0eea5c5-0d0c-41d0-a7fe-e9e0684d3523.png)
 
 ## Returning Errors
 On Response Statuses errors (4xx, 5xx), the module will return an error with the following format:
