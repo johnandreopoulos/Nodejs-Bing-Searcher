@@ -1,4 +1,4 @@
-# Simple Bing Searcher
+# Simple Bing Searcher (Scrapper)
 This is a custom nodejs module that allows you to search for a query on Bing and get the results in a JSON format.
 > The code is made to be as simple as possible, so it's not optimized for performance.
 > Used only 2 modules: [Undici](https://www.npmjs.com/package/undici) and [Cheerio](https://www.npmjs.com/package/cheerio)
