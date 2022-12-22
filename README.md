@@ -7,108 +7,84 @@ This is a custom nodejs module that allows you to search for a query on Bing and
 > <b style="color: black">Note:</b> <u>This module is not meant to be used for scraping or other illegal purposes. It's only meant to be used for educational purposes.</u>
 > </p> 
 
-# Fast navigation
-- [Simple Bing Searcher](#simple-bing-searcher)
-- [Fast navigation](#fast-navigation)
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [Query](#query)
-  - [Returning Errors](#returning-errors)
-  - [Returning the results](#returning-the-results)
-    - [Examples](#examples)
-	
-## Installation
-install [Nodejs](https://nodejs.org/en/download/) and then run this command in your terminal:
+# Details
+The `index.js` file exports a single function called `runSearch` that takes a `query` as input and calls the `search` function in the `searcher.js` file with the given query. The `runSearch` function is designed to handle any errors that may occur during the search process and log them to the console.
 
-```
-npm install
-```
-The above command will install the dependencies.
-
-```
-node index.js
-```
-The above command will start the code.
-
-## Usage
-##### Query
-You can also change the `query` by editing the following line in index.js:
-```javascript
-Search('query').then(data => {
-    if (data.error) return console.log(data);
+Here is the code for the `runSearch` function in more detail:
+```js
+async function runSearch(query) {
+  try {
+    const data = await search(query);
     console.log(data);
-});
-```
-The above code will return an `array` of results. For each result, you can access the following properties:
-```javascript
-{
-    title: 'Title of the result',
-    link: 'URL of the result',
-    content: 'Description of the result'
+  } catch (error) {
+    console.error(error);
+  }
 }
 ```
-Example of "Nodejs": ![image](https://user-images.githubusercontent.com/39243722/201919355-b0eea5c5-0d0c-41d0-a7fe-e9e0684d3523.png)
 
-## Returning Errors
-On Response Statuses errors (4xx, 5xx), the module will return an error with the following format:
-- 404: Not Found
-- 500: Internal Server Error
-- 503: Service Unavailable
-- 504: Gateway Timeout
-- No Results: No results were found for the query
-
-```javascript
-[ 
-    { error: true, message: 'Message' } 
-]
-```
-<br>
-
-## Returning the results
-##### Examples:
-
-```javascript
-// Get the all resukts
-Search.search('query').then(data => {
-    if (data.error) return console.log(data);
-    console.log(data);
-});
+To use the `runSearch` function, you will need to pass in a `query` as a string argument. For example, you can execute a search for the query 'google' by calling the `runSearch` function as follows:
+```js
+runSearch('google');
 ```
 
-```javascript
-// Get the first 1st result
-Search.search('query').then(data => {
-    if (data.error) return console.log(data);
-    console.log(data[0]);
-});
+The `search` function in the `searcher.js` file is responsible for fetching the search results from Bing and parsing them using `cheerio`. It takes a `query` as input and returns an array of objects containing the title, link, and content for each search result. If any errors occur during the fetch or parse process, the function will catch them and return an error object with a message property that describes the error.
+
+Here is the code for the `search` function in more detail:
+```js
+async function search(query) {
+    const headers = {
+        'accept-language': 'en-US,en;q=0.9',
+        'set-cookie': 'path=/; domain=.bing.com; HttpOnly; Secure; SameSite=None',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+    };
+
+    try {
+        const response = await fetch(`https://www.bing.com/search?q=${query}`, {
+            method: 'GET',
+            headers
+        });
+
+        const $ = cheerio.load(await response.text());
+        const data = [];
+
+        await $('.b_algo').each((i, el) => {
+            const title = $(el).find('h2').text() || null;
+            const link = $(el).find('a').attr('href') || null;
+            const content = $(el).find('p').text() || null;
+
+            if (title && link && content) {
+                data.push({ title, link, content });
+            }
+        });
+
+        if (data.length < 1) {
+            throw new Error('No Results');
+        }
+
+        return data;
+    } catch (error) {
+        if (error.message === 'No Results') {
+            return { error: true, message: 'No Results' };
+        } else if (error.status === 404) {
+            return { error: true, message: '404 Not Found' };
+        } else if (error.status === 500) {
+            return { error: true, message: '500 Internal Server Error' };
+        } else if (error.status === 503) {
+            return { error: true, message: '503 Service Unavailable' };
+        } else if (error.status === 504) {
+            return { error: true, message: '504 Gateway Timeout' };
+        } else {
+            return { error: true, message: error.message };
+        }
+    }
+}
+
+module.exports = { search };
 ```
 
-```javascript
-// Get the first 2nd result
-Search.search('query').then(data => {
-    if (data.error) return console.log(data);
-    console.log(data[1]);
-});
-```
+This will fetch the search results from Bing and parse them using `cheerio`. If the search was successful and returned results, the function will return an array of objects containing the title, link, and content for each result. If any errors occurred during the fetch or parse process, the function will return an error object with a message property that describes the error.
 
-```javascript
-// Get the first 2 results
-Search.search('query').then(data => {
-    if (data.error) return console.log(data);
-    console.log(data.slice(0, 2));
-});
-```
+You can then use the returned data or error object as needed in your code. For example, you could log the data to the console or display the results in a user interface.
 
-```javascript
-// Get the first 3 results
-Search.search('query').then(data => {
-    if (data.error) return console.log(data);
-    console.log(data.slice(0, 3));
-});
-```
-And so on...
 
-> Note: `slice(x, y)` is a method that returns a shallow copy of a portion of an array into a new array object selected from `begin` to `end` (end not included). The original array will not be modified.
 
-> Note: `results[0]` is a method that returns the first element of an array. The original array will not be modified.
-> - <b>Inside the brackets, you can specify the index of the element you want to get. The first element is at index 0, the second element is at index 1, and so on.</b>
