@@ -1,3 +1,6 @@
+const cheerio = require('cheerio');
+const { fetch } = require('undici');
+
 async function search(query) {
     const headers = {
         'accept-language': 'en-US,en;q=0.9',
